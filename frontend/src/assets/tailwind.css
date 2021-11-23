@@ -1,0 +1,121 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.loader {
+  border-top-color: #3498db;
+  -webkit-animation: spinner 1.5s linear infinite;
+  animation: spinner 1.5s linear infinite;
+}
+
+@-webkit-keyframes spinner {
+  0% {
+    -webkit-transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+  }
+}
+
+@keyframes spinner {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.form-tick:checked {
+  border-color: transparent;
+  background-color: currentColor;
+  background-size: 100% 100%;
+  background-position: 50%;
+  background-repeat: no-repeat;
+}
+
+.todo-content a {
+  color: #0000ff;
+}
+
+.list-group {
+  min-height: 5em;
+}
+
+.list-group-item {
+  cursor: move;
+}
+
+.ghost {
+  opacity: 0.5;
+  background-color: #dadada;
+}
+
+/* 스크롤바 설정*/
+.scroll_type1 > :last-child {
+  margin: 0;
+}
+
+.scroll_type1::-webkit-scrollbar {
+  height: 0.4em;
+}
+
+/* 스크롤바 막대 설정*/
+.scroll_type1::-webkit-scrollbar-thumb {
+  background-color: #a2a9af;
+  /* 스크롤바 둥글게 설정    */
+  border-radius: 10px;
+}
+
+/* 스크롤바 뒷 배경 설정*/
+.scroll_type1::-webkit-scrollbar-track {
+  background-color: #ebedec;
+}
+
+/* 스크롤바 설정*/
+.scroll_type2::-webkit-scrollbar {
+  width: 0.4em;
+}
+
+/* 스크롤바 막대 설정*/
+.scroll_type2::-webkit-scrollbar-thumb {
+  background-color: #a2a9af;
+  /* 스크롤바 둥글게 설정    */
+  border-radius: 10px;
+}
+
+/* 스크롤바 뒷 배경 설정*/
+.scroll_type2::-webkit-scrollbar-track {
+  background-color: #dadada;
+}
+
+.scroll_type2::-webkit-scrollbar-button:start:decrement,
+.scroll_type2::-webkit-scrollbar-button:end:increment {
+  display: block;
+  height: 0;
+  background-color: transparent;
+}
+
+.loader {
+  border-top-color: #3498db;
+  -webkit-animation: spinner 1.5s linear infinite;
+  animation: spinner 1.5s linear infinite;
+}
+
+@-webkit-keyframes spinner {
+  0% {
+    -webkit-transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+  }
+}
+
+@keyframes spinner {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
