@@ -19,7 +19,6 @@ public class AlarmService {
 
     // 체크된 알람 처리
     public void check(List<String> checkList) {
-        System.out.println(checkList);
         Alarm alarm;
         for (String alarmId : checkList) {
             alarm = alarmDao.findAlarmById(alarmId).orElseThrow(() -> new CustomException(ErrorCode.ALARM_NOT_FOUND));

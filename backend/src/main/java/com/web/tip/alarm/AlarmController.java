@@ -59,7 +59,7 @@ public class AlarmController {
         log.info("알람 목록");
         final BasicResponse result = new BasicResponse();
         result.status = true;
-        result.data = "success";
+        result.data = SUCCESS;
 
         Slice<Alarm> alarmPages = alarmService.getAlarmListByPages(mid, pageable);
 
@@ -77,7 +77,7 @@ public class AlarmController {
     public Object getReviewCnt(String mid) {
         final BasicResponse result = new BasicResponse();
         result.status = true;
-        result.data = "success";
+        result.data = SUCCESS;
 
         long alarmCnt = alarmService.getAlarmCnt(mid);
 

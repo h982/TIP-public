@@ -51,7 +51,10 @@ public class ImgService {
         MultipartFile multipartFile = Optional.ofNullable(newFile.getFile())
                 .orElseThrow(() -> new CustomException(ErrorCode.INTERNAL_SERVER_ERROR));
         try {
-            String ext = multipartFile.getOriginalFilename().substring(multipartFile.getOriginalFilename().lastIndexOf("."));
+            String originalFileName = Optional.ofNullable(multipartFile.getOriginalFilename())
+                    .orElseThrow(() -> new CustomException(ErrorCode.INTERNAL_SERVER_ERROR));
+
+            String ext = originalFileName.substring(originalFileName.lastIndexOf("."));
             String fileName = newFile.getId() + ext;
 
             MemberDetail memberDetail = memberDetailDao.findMemberDetailByMemberId(newFile.getId())

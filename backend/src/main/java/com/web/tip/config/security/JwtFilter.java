@@ -24,7 +24,7 @@ public class JwtFilter extends OncePerRequestFilter {
     public static final String BEARER_PREFIX = "Bearer ";
 
     private final TokenProvider tokenProvider;
-    private final RedisTemplate redisTemplate;
+    private final RedisTemplate<String, Object> redisTemplate;
 
     /**
      * 실제 필터링 로직이 들어있다.
@@ -49,7 +49,6 @@ public class JwtFilter extends OncePerRequestFilter {
      * @throws IOException
      */
     @Override
-    @Transactional(readOnly = true)
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
         // Request Header에서 Access Token을 꺼낸다.
         String jwt = resolveToken(request);

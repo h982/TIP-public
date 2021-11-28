@@ -28,6 +28,7 @@ public class TeamController {
 
     TeamService teamService;
 
+    static final String SUCCESS = "success";
     @GetMapping
     @ApiOperation(value = "프로젝트 내 팀리스트 반환")
     public Object getProjectTeam(@RequestParam String projectId) {
@@ -39,7 +40,7 @@ public class TeamController {
         if (teamList != null) {
 
             result.status = true;
-            result.data = "success";
+            result.data = SUCCESS;
             result.object = teamList;
 
             return new ResponseEntity<>(result, HttpStatus.OK);
@@ -65,7 +66,7 @@ public class TeamController {
 
         if (team.isPresent()) {
             result.status = true;
-            result.data = "success";
+            result.data = SUCCESS;
             result.object = team;
         }
 
@@ -81,7 +82,7 @@ public class TeamController {
 
         BasicResponse result = new BasicResponse();
         result.status = true;
-        result.data = "success";
+        result.data = SUCCESS;
         result.object = teamList;
 
         return new ResponseEntity<>(result, HttpStatus.OK);
@@ -98,7 +99,7 @@ public class TeamController {
         if (check) {
 
             result.status = true;
-            result.data = "success";
+            result.data = SUCCESS;
             result.object = null;
 
             return new ResponseEntity<>(result, HttpStatus.OK);
@@ -122,7 +123,7 @@ public class TeamController {
 
         if (flag) {
             result.status = true;
-            result.data = "success";
+            result.data = SUCCESS;
 
         } else {
             result.status = false;
@@ -142,7 +143,7 @@ public class TeamController {
 
         if (flag) {
             result.status = true;
-            result.data = "success";
+            result.data = SUCCESS;
 
         } else {
             result.status = false;
@@ -162,7 +163,7 @@ public class TeamController {
 
         if (flag) {
             result.status = true;
-            result.data = "success";
+            result.data = SUCCESS;
 
         } else {
             result.status = false;
@@ -183,7 +184,7 @@ public class TeamController {
 
         if (flag) {
             result.status = true;
-            result.data = "success";
+            result.data = SUCCESS;
 
         } else {
             result.status = false;

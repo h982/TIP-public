@@ -2,6 +2,10 @@ package com.web.tip.project;
 
 public class ProjectAdaptor {
 
+    private ProjectAdaptor (){
+        throw new IllegalStateException("utility class");
+    }
+
     public static ProjectDto entityToDto(Project project) {
 
         return ProjectDto.builder()

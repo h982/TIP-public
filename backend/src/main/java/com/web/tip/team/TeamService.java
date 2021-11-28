@@ -82,13 +82,9 @@ public class TeamService {
                 .orElseThrow(() -> new CustomException(ErrorCode.TEAM_NOT_FOUND))));
     }
 
-    @Transactional
+    @Transactional(readOnly = true)
     public boolean teamNameCheck(String projectId, String teamName) {//이미 팀체크가 끝난상태라 가정
-        if (teamDao.findTeamByProjectIdAndNameAndIsUse(projectId, teamName, true).isPresent()) {
-            return false;
-        } else {
-            return true;
-        }
+       return !teamDao.findTeamByProjectIdAndNameAndIsUse(projectId, teamName, true).isPresent();
     }
 
     @Transactional

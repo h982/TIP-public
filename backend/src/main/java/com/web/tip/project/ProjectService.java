@@ -6,7 +6,6 @@ import com.web.tip.error.CustomException;
 import com.web.tip.error.ErrorCode;
 import com.web.tip.error.JpaErrorCode;
 import com.web.tip.error.JpaException;
-import com.web.tip.member.MemberDao;
 import com.web.tip.project.request.ProjectRequest;
 import com.web.tip.project.response.ProjectResponse;
 import com.web.tip.team.Team;
@@ -29,7 +28,6 @@ public class ProjectService {
 
     private final ProjectDao projectDao;
     private final TeamDao teamDao;
-    private final MemberDao memberDao;
     private final MemberHasTeamDao memberHasTeamDao;
     private final TodoDao todoDao;
 

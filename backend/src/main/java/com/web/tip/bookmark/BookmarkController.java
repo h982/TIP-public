@@ -24,7 +24,9 @@ import java.util.List;
 @RequestMapping("/bookmark")
 public class BookmarkController {
 
-    BookmarkService bookmarkService;
+    private BookmarkService bookmarkService;
+
+    private static final String SUCCESS = "sucess";
 
     @GetMapping()
     @ApiOperation(value = "북마크 가져오기")
@@ -35,7 +37,7 @@ public class BookmarkController {
 
         final BasicResponse result = new BasicResponse();
         result.status = true;
-        result.data = "Success";
+        result.data = SUCCESS;
         result.object = bookmarkResult;
 
         return new ResponseEntity<>(result, HttpStatus.OK);
@@ -45,12 +47,13 @@ public class BookmarkController {
     @ApiOperation(value = "북마크 생성")
     public ResponseEntity<BasicResponse> addBookmark(@RequestBody BookmarkDto bookmarkDto) {
         log.info("add Bookmark");
-        boolean bookmarkResult = bookmarkService.addBookmark(bookmarkDto);
+
+        bookmarkService.addBookmark(bookmarkDto);
 
         final BasicResponse result = new BasicResponse();
         result.status = true;
-        result.data = "Success";
-        result.object = bookmarkResult;
+        result.data = SUCCESS;
+        result.object = true;
 
         return new ResponseEntity<>(result, HttpStatus.OK);
     }
@@ -63,7 +66,7 @@ public class BookmarkController {
 
         final BasicResponse result = new BasicResponse();
         result.status = true;
-        result.data = "Success";
+        result.data = SUCCESS;
         result.object = bookmarkResult;
 
         return new ResponseEntity<>(result, HttpStatus.OK);

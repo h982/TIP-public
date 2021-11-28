@@ -38,7 +38,7 @@ public class BookmarkService {
         return result;
     }
 
-    public boolean addBookmark(BookmarkDto bookmarkDto) {
+    public void addBookmark(BookmarkDto bookmarkDto) {
 
         IdGenerator idGenerator = new IdGenerator();
         String id = idGenerator.generateId();
@@ -47,21 +47,17 @@ public class BookmarkService {
         }
 
         try {
-
             Optional<Bookmark> isBookmark = bookmarkDao.findBookmarksByMemberIdAndTodoIdAndIsUse(bookmarkDto.getMemberId(), bookmarkDto.getTodoId(), true); // 이미 있다면 더티리드
             if (isBookmark.isPresent()) {
-                return true; //성공으로 간주하고 반환
+                return; //성공으로 간주하고 반환
             }
 
             Bookmark newBookmark = new Bookmark(id, bookmarkDto.getMemberId(), bookmarkDto.getTodoId(), true);
             bookmarkDao.save(newBookmark);
-
         } catch (DataAccessException e) {
             e.printStackTrace();
             throw new JpaException(JpaErrorCode.SAVE_BOOKMARK_ERROR);
         }
-
-        return true;
     }
 
     public boolean deleteBookmark(BookmarkDto bookmarkDto) {
