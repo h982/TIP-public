@@ -9,7 +9,9 @@ public interface MemberDao extends JpaRepository<Member, String> {
     Optional<Member> findMemberById(String id);
 
     Optional<Member> findMemberByNickname(String nickname);
+
     List<Member> findMemberByIsUse(boolean isUse);
+
     boolean existsByNickname(String nickname);
 
 }

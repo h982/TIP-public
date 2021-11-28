@@ -30,7 +30,7 @@ public class MemberDetail {
     @JoinColumn(name = "member_id")
     private Member member;
 
-    public void setProfileImgLink(String profileImg){
+    public void setProfileImgLink(String profileImg) {
         this.profileImg = profileImg;
     }
 

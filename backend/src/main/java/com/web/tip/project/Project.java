@@ -2,7 +2,9 @@ package com.web.tip.project;
 
 import lombok.*;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 
@@ -27,11 +29,11 @@ public class Project {
     private LocalDate endDate;
     private LocalDateTime regDate;
 
-    public void changeProjectState(){
+    public void changeProjectState() {
         this.isDone = !this.isDone;
     }
 
-    public void changeInfo(String name, String desc, LocalDate startDate, LocalDate endDate ){
+    public void changeInfo(String name, String desc, LocalDate startDate, LocalDate endDate) {
         this.name = name;
         this.desc = desc;
         this.startDate = startDate;

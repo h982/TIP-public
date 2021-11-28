@@ -23,7 +23,7 @@ public class Alarm {
     private String todoId;
     private LocalDateTime regDate;
 
-    public void changeIsShow(){
+    public void changeIsShow() {
         this.isShow = true;
     }
 }

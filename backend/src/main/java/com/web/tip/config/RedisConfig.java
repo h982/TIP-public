@@ -55,7 +55,7 @@ public class RedisConfig {
     }
 
     @Bean
-    public IdGenerator idGenerator(){
+    public IdGenerator idGenerator() {
         return new IdGenerator();
     }
 }

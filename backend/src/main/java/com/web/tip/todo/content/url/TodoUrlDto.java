@@ -1,6 +1,5 @@
 package com.web.tip.todo.content.url;
 
-import com.web.tip.todo.content.TodoContent;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;

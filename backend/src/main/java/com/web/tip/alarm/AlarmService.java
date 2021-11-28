@@ -21,7 +21,7 @@ public class AlarmService {
     public void check(List<String> checkList) {
         System.out.println(checkList);
         Alarm alarm;
-        for(String alarmId : checkList){
+        for (String alarmId : checkList) {
             alarm = alarmDao.findAlarmById(alarmId).orElseThrow(() -> new CustomException(ErrorCode.ALARM_NOT_FOUND));
             alarm.changeIsShow();
             alarmDao.save(alarm);
@@ -32,15 +32,15 @@ public class AlarmService {
     // 모든 알람 처리
     public void checkAll(String memberId) {
 
-        try{
+        try {
             List<Alarm> alarmList = alarmDao.findAlarmByMemberId(memberId);
 
-            for(Alarm alarm : alarmList){
+            for (Alarm alarm : alarmList) {
                 alarm.changeIsShow();
                 alarmDao.save(alarm);
             }
 
-        } catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
 

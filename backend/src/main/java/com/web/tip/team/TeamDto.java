@@ -2,8 +2,6 @@ package com.web.tip.team;
 
 import lombok.*;
 
-import javax.persistence.Id;
-
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor

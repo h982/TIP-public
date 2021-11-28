@@ -62,7 +62,7 @@ public class MemberDetailService {
 
         MemberDetail memberDetail = member.getMemberDetail();
 
-        if(Optional.ofNullable(updateMemberRequest.getName()).isPresent()) {
+        if (Optional.ofNullable(updateMemberRequest.getName()).isPresent()) {
             memberDao.save(Member.builder()
                     .memberDetail(memberDetail)
                     .name(updateMemberRequest.getName())

@@ -159,7 +159,7 @@ public class MemberController {
     }
 
     @GetMapping("/{teamId}")
-    public Object getMembersByTeam(@PathVariable("teamId") String teamId){
+    public Object getMembersByTeam(@PathVariable("teamId") String teamId) {
         log.info("모든 팀 멤버 반환");
 
         BasicResponse result = new BasicResponse();

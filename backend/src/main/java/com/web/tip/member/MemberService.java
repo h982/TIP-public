@@ -11,7 +11,6 @@ import com.web.tip.member.request.UpdatePasswordRequest;
 import com.web.tip.member.response.MemberResponse;
 import com.web.tip.member.response.TeamMemberResponse;
 import com.web.tip.member.security.Authority;
-import com.web.tip.mypage.MemberDetail;
 import com.web.tip.mypage.MemberDetailDto;
 import com.web.tip.mypage.MemberDetailService;
 import com.web.tip.util.IdGenerator;
@@ -233,14 +232,14 @@ public class MemberService {
     }
 
     @Transactional(readOnly = true)
-    public List<TeamMemberResponse> getMembersByTeam(String teamId){
+    public List<TeamMemberResponse> getMembersByTeam(String teamId) {
         List<MemberHasTeam> memberHasTeams = memberHasTeamDao.findByTeamId(teamId);
-        if(memberHasTeams.isEmpty())
+        if (memberHasTeams.isEmpty())
             return Collections.emptyList();
 
         List<TeamMemberResponse> memberResponses = new ArrayList<>();
-        for(MemberHasTeam memberHasTeam: memberHasTeams){
-            if(!memberHasTeam.isUse())
+        for (MemberHasTeam memberHasTeam : memberHasTeams) {
+            if (!memberHasTeam.isUse())
                 continue;
             Member member = memberDao.findMemberById(memberHasTeam.getMemberId())
                     .orElseThrow(() -> new CustomException(ErrorCode.MEMBER_NOT_FOUND));

@@ -31,7 +31,7 @@ public class BookmarkController {
     public ResponseEntity<BasicResponse> getBookmarkList(@RequestParam String projectId, @RequestParam String memberId) {
         log.info("get Bookmark");
 
-        List<Bookmark> bookmarkResult = (List<Bookmark>) bookmarkService.getBookmarkList(projectId,memberId);
+        List<Bookmark> bookmarkResult = (List<Bookmark>) bookmarkService.getBookmarkList(projectId, memberId);
 
         final BasicResponse result = new BasicResponse();
         result.status = true;

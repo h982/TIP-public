@@ -75,7 +75,7 @@ public class TodoContentService {
 
         List<TodoContentDto> todoContentDtos = new ArrayList<>();
         for (TodoContent todoContent : todoContents) {
-            if(!todoContent.isUse())
+            if (!todoContent.isUse())
                 continue;
             todoContentDtos.add(TodoContentDto.entityToDto(todoContent));
         }
@@ -146,7 +146,7 @@ public class TodoContentService {
         String writer = todoContent.getMember().getName();
         Map<String, String> diff = new HashMap<>();
         diff.put("writer", writer);
-        diff.put("message",  writer + "님께서  " + todoContent.getTodo().getTitle() +"의 상세 정보를 생성했습니다.");
+        diff.put("message", writer + "님께서  " + todoContent.getTodo().getTitle() + "의 상세 정보를 생성했습니다.");
         diff.put("before", "");
         diff.put("after", todoContent.getContents());
 
@@ -166,7 +166,7 @@ public class TodoContentService {
 
         Map<String, String> diff = new HashMap<>();
         diff.put("writer", writer.getName());
-        diff.put("message",  writer.getName() + "님께서  " + todoContent.getTodo().getTitle() +"의 상세 정보를 변경했습니다.");
+        diff.put("message", writer.getName() + "님께서  " + todoContent.getTodo().getTitle() + "의 상세 정보를 변경했습니다.");
         diff.put("before", before);
         diff.put("after", todoContent.getContents());
 
@@ -186,7 +186,7 @@ public class TodoContentService {
 
         Map<String, String> diff = new HashMap<>();
         diff.put("writer", writer.getName());
-        diff.put("message", writer.getName() + "님께서 " + todoContent.getTodo().getTitle() +"의 상세 정보를 삭제했습니다.");
+        diff.put("message", writer.getName() + "님께서 " + todoContent.getTodo().getTitle() + "의 상세 정보를 삭제했습니다.");
         diff.put("before", todoContent.getContents());
         diff.put("after", "");
 

@@ -4,7 +4,6 @@ import com.web.tip.project.Project;
 import lombok.*;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 
 @Setter
 @Getter
@@ -23,7 +22,7 @@ public class ProjectResponse {
     private int progressCnt;
     private int doneCnt;
 
-    public static ProjectResponse entityToResponse(Project project, int[] count){
+    public static ProjectResponse entityToResponse(Project project, int[] count) {
         return ProjectResponse.builder()
                 .id(project.getId())
                 .desc(project.getDesc())

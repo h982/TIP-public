@@ -24,7 +24,7 @@ public class AlarmController {
 
     @PutMapping("/check")
     @ApiOperation(value = "알람 체크")
-    public Object checkAlarm(@RequestBody List<String> checkList){
+    public Object checkAlarm(@RequestBody List<String> checkList) {
         log.info("알람 체크하기");
 
         alarmService.check(checkList);
@@ -39,7 +39,7 @@ public class AlarmController {
 
     @PutMapping("/checkAll/{memberId}")
     @ApiOperation(value = "모든 알람 체크")
-    public Object checkAllAlarm(@PathVariable(name = "memberId") String memberId){
+    public Object checkAllAlarm(@PathVariable(name = "memberId") String memberId) {
         log.info("모든 알람 체크하기");
 
         alarmService.checkAll(memberId);
@@ -65,8 +65,7 @@ public class AlarmController {
 
         if (alarmPages.isEmpty()) {
             result.object = false;
-        }
-        else {
+        } else {
             result.object = alarmPages;
         }
 
@@ -74,7 +73,7 @@ public class AlarmController {
     }
 
     @GetMapping("/getAlarmCnt")
-    @ApiOperation(value="현재 알람의 개수를 반환")
+    @ApiOperation(value = "현재 알람의 개수를 반환")
     public Object getReviewCnt(String mid) {
         final BasicResponse result = new BasicResponse();
         result.status = true;
@@ -84,8 +83,7 @@ public class AlarmController {
 
         if (alarmCnt == 0) {
             result.object = false;
-        }
-        else {
+        } else {
             result.object = alarmCnt;
         }
 

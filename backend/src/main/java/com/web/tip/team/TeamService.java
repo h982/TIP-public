@@ -31,24 +31,24 @@ public class TeamService {
     private IdGenerator idGenerator;
 
     @Transactional(readOnly = true)
-    public Object getAllTeam(String projectId){
+    public Object getAllTeam(String projectId) {
 
         List<TeamDto> result = new ArrayList<>();
-        teamDao.findTeamByProjectIdAndIsUse(projectId,true).forEach(v -> result.add(TeamAdaptor.entityToDto(v)));
+        teamDao.findTeamByProjectIdAndIsUse(projectId, true).forEach(v -> result.add(TeamAdaptor.entityToDto(v)));
 
         return result;
     }
 
     @Transactional(readOnly = true)
-    public Object getAllMembers(String projectId){//이미 팀체크가 끝난상태라 가정
+    public Object getAllMembers(String projectId) {//이미 팀체크가 끝난상태라 가정
         try {
-            List<Team> teamList = teamDao.findTeamByProjectIdAndIsUse(projectId,true);//팀 리스트
+            List<Team> teamList = teamDao.findTeamByProjectIdAndIsUse(projectId, true);//팀 리스트
 
             ArrayList<String> teamIdList = new ArrayList<>();
             teamList.forEach(v -> teamIdList.add(v.getId()));
             List<MemberHasTeam> byTeamIdIn = memberHasTeamDao.findByTeamIdInAndIsUse(teamIdList, true);//프로젝트 내부의 사람들
 
-            if(byTeamIdIn.isEmpty()){
+            if (byTeamIdIn.isEmpty()) {
                 return Collections.emptyList();
             }
 
@@ -63,19 +63,19 @@ public class TeamService {
         }
     }
 
-    @Transactional(readOnly=true)
-    public Optional<TeamDto> getMyTeam(String projectId, String memberId){
+    @Transactional(readOnly = true)
+    public Optional<TeamDto> getMyTeam(String projectId, String memberId) {
         projectDao.findProjectById(projectId)
                 .orElseThrow(() -> new CustomException(ErrorCode.PROJECT_NOT_FOUND));
 
         List<Team> teamList = teamDao.findTeamByProjectIdAndIsUse(projectId, true);
         List<String> teams = new ArrayList<>();
-        for(Team team: teamList){
+        for (Team team : teamList) {
             teams.add(team.getId());
         }
 
         Optional<MemberHasTeam> memberHasTeam = memberHasTeamDao.findMemberHasTeamByMemberIdAndTeamIdInAndIsUse(memberId, teams, true);
-        if(!memberHasTeam.isPresent())
+        if (!memberHasTeam.isPresent())
             return Optional.empty();
 
         return Optional.of(TeamAdaptor.entityToDto(teamDao.findTeamById(memberHasTeam.get().getTeamId())
@@ -83,8 +83,8 @@ public class TeamService {
     }
 
     @Transactional
-    public boolean teamNameCheck(String projectId, String teamName){//이미 팀체크가 끝난상태라 가정
-        if(teamDao.findTeamByProjectIdAndNameAndIsUse(projectId,teamName, true).isPresent()){
+    public boolean teamNameCheck(String projectId, String teamName) {//이미 팀체크가 끝난상태라 가정
+        if (teamDao.findTeamByProjectIdAndNameAndIsUse(projectId, teamName, true).isPresent()) {
             return false;
         } else {
             return true;
@@ -92,29 +92,29 @@ public class TeamService {
     }
 
     @Transactional
-    public boolean createProjectTeam(CreationTeamRequest newRequestTeam){//이미 팀체크가 끝난상태라 가정
+    public boolean createProjectTeam(CreationTeamRequest newRequestTeam) {//이미 팀체크가 끝난상태라 가정
 
         String projectId = newRequestTeam.getProjectId();
         String teamId = idGenerator.generateId();
 
-        while (teamDao.existsById(teamId)){
+        while (teamDao.existsById(teamId)) {
             teamId = idGenerator.generateId();
         }
 
         try {
-            teamDao.save(new Team(teamId,newRequestTeam.getTeamName(),projectId,true)); //새 팀 생성
+            teamDao.save(new Team(teamId, newRequestTeam.getTeamName(), projectId, true)); //새 팀 생성
 
             List<String> teamMembers = newRequestTeam.getMemberList();
-            List<Team> teamList = teamDao.findTeamByProjectIdAndIsUse(projectId,true);//팀 리스트
+            List<Team> teamList = teamDao.findTeamByProjectIdAndIsUse(projectId, true);//팀 리스트
 
             ArrayList<String> teamIdList = new ArrayList<>();
             teamList.forEach(v -> teamIdList.add(v.getId()));
             List<MemberHasTeam> byTeamIdIn = memberHasTeamDao.findByTeamIdInAndIsUse(teamIdList, true);//프로젝트 내부의 사람들
 
-            for ( String m : teamMembers) {
-                MemberHasTeam mt = new MemberHasTeam(m,teamId,true);
-                for ( MemberHasTeam t : byTeamIdIn){
-                    if(t.getMemberId().equals(m)){
+            for (String m : teamMembers) {
+                MemberHasTeam mt = new MemberHasTeam(m, teamId, true);
+                for (MemberHasTeam t : byTeamIdIn) {
+                    if (t.getMemberId().equals(m)) {
                         t.setUse(false);
                         memberHasTeamDao.save(t);
                         break;
@@ -132,23 +132,23 @@ public class TeamService {
     }
 
     @Transactional
-    public boolean modifyProjectTeamMember(ModificationTeamRequest modificationTeamRequest){
+    public boolean modifyProjectTeamMember(ModificationTeamRequest modificationTeamRequest) {
         String teamId = modificationTeamRequest.getTeamId();
 
         try {
             Team team = teamDao.findTeamById(teamId).orElseThrow(() -> new CustomException(ErrorCode.TEAM_NOT_FOUND));
 
             List<String> teamMembers = modificationTeamRequest.getMemberList();
-            List<Team> teamList = teamDao.findTeamByProjectIdAndIsUse(team.getProjectId(),true);//팀 리스트
+            List<Team> teamList = teamDao.findTeamByProjectIdAndIsUse(team.getProjectId(), true);//팀 리스트
 
             ArrayList<String> teamIdList = new ArrayList<>();
             teamList.forEach(v -> teamIdList.add(v.getId()));
             List<MemberHasTeam> byTeamIdIn = memberHasTeamDao.findByTeamIdInAndIsUse(teamIdList, true);//프로젝트 내부의 사람들
 
-            for ( String m : teamMembers) {
-                MemberHasTeam mt = new MemberHasTeam(m,teamId, true);
-                for ( MemberHasTeam t : byTeamIdIn){
-                    if(t.getMemberId().equals(m)){
+            for (String m : teamMembers) {
+                MemberHasTeam mt = new MemberHasTeam(m, teamId, true);
+                for (MemberHasTeam t : byTeamIdIn) {
+                    if (t.getMemberId().equals(m)) {
                         t.setUse(false);
                         memberHasTeamDao.save(t); //기존것 삭제
                         break;
@@ -166,7 +166,7 @@ public class TeamService {
     }
 
     @Transactional
-    public boolean modifyProjectTeamName(TeamDto teamDto){
+    public boolean modifyProjectTeamName(TeamDto teamDto) {
 
         String teamId = teamDto.getId();
 
@@ -184,7 +184,7 @@ public class TeamService {
     }
 
     @Transactional
-    public boolean deleteProjectTeam(String teamId){
+    public boolean deleteProjectTeam(String teamId) {
         try {
             Team team = teamDao.findById(teamId).orElseThrow(() -> new CustomException(ErrorCode.TEAM_NOT_FOUND));
             team.deleteTeam();

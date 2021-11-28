@@ -107,7 +107,7 @@ public class ProjectService {
     public boolean modifyProject(ProjectRequest projectRequest) {
         // 프로젝트 이름으로 완료시킬 프로젝트 Entity를 가져온다.
         Project project = projectDao.findById(projectRequest.getId()).orElseThrow(() -> new CustomException(ErrorCode.PROJECT_NOT_FOUND));
-        project.changeInfo(projectRequest.getName(),projectRequest.getDesc(),projectRequest.getStartDate(),projectRequest.getEndDate());
+        project.changeInfo(projectRequest.getName(), projectRequest.getDesc(), projectRequest.getStartDate(), projectRequest.getEndDate());
 
         try {
             projectDao.save(project);

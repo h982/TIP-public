@@ -1,5 +1,9 @@
 package com.web.tip.team;
-import lombok.*;
+
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -16,11 +20,11 @@ public class Team {
     private String projectId;
     private boolean isUse;
 
-    public void changeName(String name){
+    public void changeName(String name) {
         this.name = name;
     }
 
-    public void deleteTeam(){
+    public void deleteTeam() {
         this.isUse = false;
     }
 

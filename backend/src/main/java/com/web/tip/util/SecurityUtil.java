@@ -7,7 +7,8 @@ import org.springframework.security.core.context.SecurityContextHolder;
 @Slf4j
 public class SecurityUtil {
 
-    private SecurityUtil() { }
+    private SecurityUtil() {
+    }
 
     /**
      * JwtFilter에서 SecurityContext에 세팅한 유저 정보를 꺼낸다.

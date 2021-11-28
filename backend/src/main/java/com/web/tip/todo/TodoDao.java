@@ -9,6 +9,7 @@ import java.util.List;
 
 public interface TodoDao extends JpaRepository<Todo, String> {
     List<Todo> findTodosByProjectId(String projectId);
+
     @Query("SELECT t.status from Todo t where t.project = :#{#project}")
     List<String> findStatusByProject(@Param(value = "project") Project project);
 }

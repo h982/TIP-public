@@ -1,6 +1,5 @@
 package com.web.tip.project.request;
 
-import com.web.tip.project.Project;
 import lombok.*;
 
 import java.time.LocalDate;

@@ -1,4 +1,5 @@
 package com.web.tip.common;
+
 import lombok.*;
 
 @Builder

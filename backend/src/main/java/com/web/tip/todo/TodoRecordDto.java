@@ -22,7 +22,7 @@ public class TodoRecordDto {
 
     private LocalDateTime modifyDate;
 
-    public static TodoRecordDto todoRecordToDto(TodoRecord todoRecord){
+    public static TodoRecordDto todoRecordToDto(TodoRecord todoRecord) {
         return TodoRecordDto.builder()
                 .id(todoRecord.getId())
                 .isContent(false)
@@ -31,7 +31,7 @@ public class TodoRecordDto {
                 .build();
     }
 
-    public static TodoRecordDto todoContentRecordToDto(TodoContentRecord todoContentRecord){
+    public static TodoRecordDto todoContentRecordToDto(TodoContentRecord todoContentRecord) {
         return TodoRecordDto.builder()
                 .id(todoContentRecord.getId())
                 .isContent(true)

@@ -36,7 +36,7 @@ public class MyPageController {
     }
 
     @PutMapping
-    public ResponseEntity<Object> updateMypage(UpdateMemberRequest updateMemberRequest){
+    public ResponseEntity<Object> updateMypage(UpdateMemberRequest updateMemberRequest) {
         log.info("프로필 수정 요청이 들어왔습니다: " + updateMemberRequest.toString());
         MemberDetailDto memberDetail = memberDetailService.updateMemberDetail(updateMemberRequest);
 

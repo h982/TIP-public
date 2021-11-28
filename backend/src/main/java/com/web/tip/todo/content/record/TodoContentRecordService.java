@@ -26,20 +26,20 @@ public class TodoContentRecordService {
     private final TodoContentRecordDao todoContentRecordDao;
 
     @Transactional(readOnly = true, isolation = Isolation.READ_COMMITTED)
-    public List<TodoRecordDto> findTodoContentRecords(String todoId){
+    public List<TodoRecordDto> findTodoContentRecords(String todoId) {
         Todo todo = todoDao.findById(todoId)
                 .orElseThrow(() -> new CustomException(ErrorCode.TODO_NOT_FOUND));
         List<TodoContent> todoContents = todoContentDao.findTodoContentsByTodo(todo);
-        if(todoContents.isEmpty())
+        if (todoContents.isEmpty())
             return Collections.emptyList();
 
         List<TodoRecordDto> todoContentRecordDtos = new ArrayList<>();
-        for(TodoContent todoContent: todoContents){
+        for (TodoContent todoContent : todoContents) {
             List<TodoContentRecord> todoContentRecords = todoContentRecordDao.findTodoContentRecordsByTodoContent(todoContent);
-            if(todoContentRecords.isEmpty())
+            if (todoContentRecords.isEmpty())
                 continue;
 
-            for(TodoContentRecord todoContentRecord: todoContentRecords){
+            for (TodoContentRecord todoContentRecord : todoContentRecords) {
                 todoContentRecordDtos.add(TodoRecordDto.todoContentRecordToDto(todoContentRecord));
             }
         }

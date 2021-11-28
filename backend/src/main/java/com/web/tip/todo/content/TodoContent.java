@@ -20,7 +20,7 @@ public class TodoContent {
     @Column(name = "contents", nullable = false, length = 1000)
     private String contents;
 
-    @Column(name ="is_use")
+    @Column(name = "is_use")
     private boolean isUse;
 
     @ManyToOne(fetch = FetchType.EAGER)

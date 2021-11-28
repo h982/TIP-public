@@ -30,7 +30,7 @@ public class ImgService {
 
         Resource img = new FileSystemResource("//home//ubuntu//upload//default.png");
 
-        if(Optional.ofNullable(id).isPresent() && !"null".equals(id)) {
+        if (Optional.ofNullable(id).isPresent() && !"null".equals(id)) {
             MemberDetail memberDetail = memberDetailDao.findMemberDetailByMemberId(id)
                     .orElseThrow(() -> new CustomException(ErrorCode.MEMBER_NOT_FOUND));
             img = new FileSystemResource("//home//ubuntu//upload//" + Optional.ofNullable(memberDetail.getProfileImg())

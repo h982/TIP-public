@@ -14,7 +14,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -109,10 +108,10 @@ public class TodoContentController {
         log.info("todoContentRecord {}개 발견", todoContentRecordDtos.size());
 
         List<TodoRecordDto> records = new ArrayList<>();
-        if(!todoRecordDtos.isEmpty()){
+        if (!todoRecordDtos.isEmpty()) {
             records.addAll(todoRecordDtos);
         }
-        if(!todoContentRecordDtos.isEmpty()){
+        if (!todoContentRecordDtos.isEmpty()) {
             records.addAll(todoContentRecordDtos);
         }
         Collections.sort(records, (o1, o2) -> o2.getModifyDate().compareTo(o1.getModifyDate()));

@@ -10,7 +10,10 @@ import java.util.Optional;
 public interface AlarmDao extends JpaRepository<Alarm, String> {
 
     Optional<Alarm> findAlarmById(String alarmId);
+
     List<Alarm> findAlarmByMemberId(String memberId);
+
     Slice<Alarm> findAlarmByMemberIdAndIsShowIsFalse(String memberId, Pageable pagable);
+
     long countAlarmByMemberIdAndIsShowIsFalse(String memberId);
 }

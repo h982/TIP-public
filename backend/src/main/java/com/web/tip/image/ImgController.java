@@ -23,7 +23,7 @@ public class ImgController {
 
     @GetMapping("/{id}")
     public Object getImgFile(@PathVariable String id) throws MalformedURLException {
-        Resource resource =  imgService.getFile(id);
+        Resource resource = imgService.getFile(id);
 
         return ResponseEntity.ok()
                 .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + resource.getFilename() + "\"")
@@ -42,7 +42,6 @@ public class ImgController {
 
         return new ResponseEntity<>(result, HttpStatus.OK);
     }
-
 
 
 }

@@ -1,7 +1,10 @@
 package com.web.tip.bookmark;
 
 import lombok.*;
-import javax.persistence.*;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
 
 @Entity
 @Getter
@@ -25,7 +28,7 @@ public class Bookmark {
     @Column(name = "is_use")
     private boolean isUse;
 
-    public void deleteBookmark(){
+    public void deleteBookmark() {
         this.isUse = false;
     }
 

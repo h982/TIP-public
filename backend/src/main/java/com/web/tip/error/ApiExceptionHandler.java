@@ -24,7 +24,7 @@ public class ApiExceptionHandler {
 
         BasicResponse result = new BasicResponse();
 
-        result.status =false;
+        result.status = false;
         result.data = "fail";
 
         return new ResponseEntity<>(result, HttpStatus.OK);

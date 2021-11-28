@@ -55,7 +55,7 @@ public class TeamController {
 
     @GetMapping("/myTeam")
     @ApiOperation(value = "내 팀 가져오기")
-    public Object getMyTeam(@RequestParam String projectId, @RequestParam String memberId){
+    public Object getMyTeam(@RequestParam String projectId, @RequestParam String memberId) {
         log.info("내 팀 가져오기");
         Optional<TeamDto> team = teamService.getMyTeam(projectId, memberId);
 
@@ -63,7 +63,7 @@ public class TeamController {
         result.status = false;
         result.data = "fail";
 
-        if(team.isPresent()) {
+        if (team.isPresent()) {
             result.status = true;
             result.data = "success";
             result.object = team;

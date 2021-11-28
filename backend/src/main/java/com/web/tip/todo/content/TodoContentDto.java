@@ -1,6 +1,5 @@
 package com.web.tip.todo.content;
 
-import com.web.tip.member.MemberDto;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;

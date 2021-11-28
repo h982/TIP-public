@@ -2,7 +2,7 @@ package com.web.tip.project;
 
 public class ProjectAdaptor {
 
-    public static ProjectDto entityToDto(Project project){
+    public static ProjectDto entityToDto(Project project) {
 
         return ProjectDto.builder()
                 .id(project.getId())
@@ -15,7 +15,7 @@ public class ProjectAdaptor {
                 .build();
     }
 
-    public static Project dtoToEntity(ProjectDto projectDto){
+    public static Project dtoToEntity(ProjectDto projectDto) {
 
         return Project.builder()
                 .id(projectDto.getId())
